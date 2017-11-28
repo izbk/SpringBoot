@@ -20,6 +20,7 @@
 
 package cn.mldn.microboot.service.impl;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -41,87 +42,87 @@ public class RedisListServiceImpl implements RedisListService {
 	@Autowired
 	RedisTemplate<String, Object> redisTemplate;
 	@Override
-	public Object leftPop(String key) throws Exception {
+	public Object leftPop(String key) {
 		return redisTemplate.opsForList().leftPop(key);
 	}
 	@Override
-	public Object leftPop(String key,Long timeout,TimeUnit unit) throws Exception {
+	public Object leftPop(String key,Long timeout,TimeUnit unit) {
 		return redisTemplate.opsForList().leftPop(key, timeout, unit);
 	}
 	@Override
-	public Long leftPush(String key,Object value) throws Exception {
+	public Long leftPush(String key,Object value) {
 		return redisTemplate.opsForList().leftPush(key, value);
 	}
 	@Override
-	public Long leftPush(String key,Object pivot,Object value) throws Exception {
+	public Long leftPush(String key,Object pivot,Object value) {
 		return redisTemplate.opsForList().leftPush(key, pivot, value);
 	}
 	@Override
-	public Long leftPushAll(String key,List<Object> values) throws Exception {
+	public Long leftPushAll(String key,Collection<Object> values) {
 		return redisTemplate.opsForList().leftPushAll(key, values);
 	}
 	@Override
-	public Long leftPushAll(String key,Object... values) throws Exception {
+	public Long leftPushAll(String key,Object... values) {
 		return redisTemplate.opsForList().leftPushAll(key, values);
 	}
 	@Override
-	public Long leftPushIfPresent(String key,Object value) throws Exception {
+	public Long leftPushIfPresent(String key,Object value) {
 		return redisTemplate.opsForList().leftPushIfPresent(key, value);
 	}
 	@Override
-	public List<Object> range(String key,Long start,Long end) throws Exception {
+	public List<Object> range(String key,Long start,Long end) {
 		return redisTemplate.opsForList().range(key, start, end);
 	}
 	@Override
-	public Long remove(String key,Long count,Object value) throws Exception {
+	public Long remove(String key,Long count,Object value) {
 		return redisTemplate.opsForList().remove(key, count, value);
 	}
 	@Override
-	public void trim(String key,Long start,Long end) throws Exception {
+	public void trim(String key,Long start,Long end) {
 		redisTemplate.opsForList().trim(key, start, end);
 	}
 	@Override
-	public Object rightPop(String key) throws Exception {
+	public Object rightPop(String key) {
 		return redisTemplate.opsForList().rightPop(key);
 	}
 	@Override
-	public Object rightPop(String key,Long timeout,TimeUnit unit) throws Exception {
+	public Object rightPop(String key,Long timeout,TimeUnit unit) {
 		return redisTemplate.opsForList().rightPop(key, timeout, unit);
 	}
 	@Override
-	public Long rightPush(String key,Object value) throws Exception {
+	public Long rightPush(String key,Object value) {
 		return redisTemplate.opsForList().rightPush(key, value);
 	}
 	@Override
-	public Long rightPush(String key,Object pivot,Object value) throws Exception {
+	public Long rightPush(String key,Object pivot,Object value) {
 		return redisTemplate.opsForList().rightPush(key, pivot, value);
 	}
 	@Override
-	public Object rightPopAndLeftPush(String sourceKey, String destinationKey) throws Exception {
+	public Object rightPopAndLeftPush(String sourceKey, String destinationKey) {
 		return redisTemplate.opsForList().rightPopAndLeftPush(sourceKey, destinationKey);
 	}
 	@Override
-	public Object rightPopAndLeftPush(String sourceKey, String destinationKey,Long timeout,TimeUnit unit) throws Exception {
+	public Object rightPopAndLeftPush(String sourceKey, String destinationKey,Long timeout,TimeUnit unit) {
 		return redisTemplate.opsForList().rightPopAndLeftPush(sourceKey, destinationKey, timeout, unit);
 	}
 	@Override
-	public Long rightPushAll(String key,List<Object> values) throws Exception {
+	public Long rightPushAll(String key,Collection<Object> values) {
 		return redisTemplate.opsForList().rightPushAll(key, values);
 	}
 	@Override
-	public Long rightPushAll(String key,Object... values) throws Exception {
+	public Long rightPushAll(String key,Object... values) {
 		return redisTemplate.opsForList().rightPushAll(key, values);
 	}
 	@Override
-	public Long rightPushIfPresent(String key,Object value) throws Exception {
+	public Long rightPushIfPresent(String key,Object value) {
 		return redisTemplate.opsForList().rightPushIfPresent(key, value);
 	}
 	@Override
-	public void set(String key,Long index,Object value) throws Exception {
+	public void set(String key,Long index,Object value) {
 		redisTemplate.opsForList().set(key,index,value);
 	}
 	@Override
-	public Long size(String key) throws Exception {
+	public Long size(String key) {
 		return redisTemplate.opsForList().size(key);
 	}
 	

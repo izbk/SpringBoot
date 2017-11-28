@@ -20,18 +20,16 @@
 
 package cn.mldn.microboot.service.impl;
 
-import java.util.List;
+import java.util.Date;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import cn.mldn.microboot.service.RedisKVService;
@@ -47,72 +45,159 @@ import cn.mldn.microboot.service.RedisKVService;
  * @Copyright: 2017 izbk@163.com All rights reserved.
  */
 public class RedisKVServiceImpl implements RedisKVService {
-	private static final Logger log = LoggerFactory.getLogger(RedisKVServiceImpl.class);
-	@Autowired
-	RedisTemplate<String, Object> redisTemplate;
 	@Autowired
 	StringRedisTemplate stringRedisTemplate;
 
 	@Override
-	public String get(String key) throws Exception {
+	public String get(String key){
 		return stringRedisTemplate.opsForValue().get(key);
+	}
+	
+	@Override
+	public String getAndSet(String key, String value){
+		return stringRedisTemplate.opsForValue().getAndSet(key, value);
+	}
+	
+	@Override
+	public String getRange(String key,Long start,Long end){
+		return stringRedisTemplate.opsForValue().get(key, start, end);
 	}
 
 	@Override
-	public void set(String key, String value) throws Exception {
+	public void set(String key, String value){
 		stringRedisTemplate.opsForValue().set(key, value);
 	}
 
 	@Override
-	public void set(String key, String value, long timeout, TimeUnit unit) throws Exception {
+	public void set(String key, String value, long timeout, TimeUnit unit){
 		stringRedisTemplate.opsForValue().set(key, value, timeout, unit);
 	}
 
 	@Override
-	public void deleteKey(List<String> keys) throws Exception {
-		stringRedisTemplate.delete(keys);
+	public Boolean setIfAbsent(String key, String value){
+		return stringRedisTemplate.opsForValue().setIfAbsent(key, value);
+	}
+	
+	@Override
+	public void setRange(String key, String value,long offset){
+		stringRedisTemplate.opsForValue().set(key, value, offset);
 	}
 
 	@Override
-	public void clear() throws Exception {
-		stringRedisTemplate.execute(new RedisCallback<Object>() {
-
-			@Override
-			public Object doInRedis(RedisConnection connection) throws DataAccessException {
-				try {
-					Set<byte[]> keys = connection.keys("*".getBytes());
-					connection.multi();
-					for (byte[] key : keys) {
-						connection.del(key);
-					}
-					connection.exec();
-				} catch (Exception e) {
-					log.error("com.utils.redis.impl.RedisCommonDaoImpl clear " + e);
-					throw (DataAccessException) e;
-				}
-				return null;
-			}
-		});
+	public long increment(String key, Long incrBy){
+		return stringRedisTemplate.opsForValue().increment(key, incrBy);
+	}
+	
+	@Override
+	public Collection<String> multiGet(Collection<String> keys){
+		return stringRedisTemplate.opsForValue().multiGet(keys);
 	}
 
 	@Override
-	public long incrBy(String key, Long incrBy) throws Exception {
+	public void multiSet(Map<String, String> map){
+		stringRedisTemplate.opsForValue().multiSet(map);
+	}
+
+	@Override
+	public Integer append(String key, String value){
+		return stringRedisTemplate.opsForValue().append(key, value);
+	}
+
+	@Override
+	public Double increment(String key, Double incrBy){
 		return stringRedisTemplate.opsForValue().increment(key, incrBy);
 	}
 
 	@Override
-	public boolean exists(String key) throws Exception {
-		return stringRedisTemplate.execute(new RedisCallback<Boolean>() {
-			@Override
-			public Boolean doInRedis(RedisConnection connection) throws DataAccessException {
-				return connection.exists(key.getBytes());
-			}
-		});
+	public Boolean multiSetIfAbsent(Map<String, String> map){
+		return stringRedisTemplate.opsForValue().multiSetIfAbsent(map);
+	}
+	
+	@Override
+	public long size(String key){
+		return stringRedisTemplate.opsForValue().size(key);
+	}
+	
+	@Override
+	public Boolean hasKey(String key){
+		return stringRedisTemplate.hasKey(key);
 	}
 
 	@Override
-	public String flushDB() throws Exception {
-		return redisTemplate.execute(new RedisCallback<String>() {
+	public Boolean expire(String key, Long timeout, TimeUnit unit){
+		return stringRedisTemplate.expire(key, timeout, unit);
+	}
+
+	@Override
+	public Boolean expireAt(String key, Date date){
+		return stringRedisTemplate.expireAt(key, date);
+	}
+	
+	@Override
+	public Set<String> keys(String pattern){
+		return stringRedisTemplate.keys(pattern);
+	}
+
+	@Override
+	public Boolean persist(String key){
+		return stringRedisTemplate.persist(key);
+	}
+
+	@Override
+	public Long getExpire(String key, TimeUnit timeUnit){
+		return stringRedisTemplate.getExpire(key, timeUnit);
+	}
+	@Override
+	public String type(String key){
+		return stringRedisTemplate.type(key).code();
+	}
+
+	@Override
+	public void delete(String key){
+		stringRedisTemplate.delete(key);
+	}
+	@Override
+	public void delete(Collection<String> keys){
+		stringRedisTemplate.delete(keys);
+	}
+
+	@Override
+	public Long getExpire(String key){
+		return stringRedisTemplate.getExpire(key);
+	}
+
+	@Override
+	public Boolean move(String key, int dbIndex) {
+		return stringRedisTemplate.move(key, dbIndex);
+	}
+
+	@Override
+	public String randomKey() {
+		return stringRedisTemplate.randomKey();
+	}
+
+	@Override
+	public void rename(String oldKey, String newKey) {
+		stringRedisTemplate.rename(oldKey, newKey);		
+	}
+
+	@Override
+	public Boolean renameIfAbsent(String oldKey, String newKey) {
+		return stringRedisTemplate.renameIfAbsent(oldKey, newKey);
+	}
+
+	@Override
+	public byte[] dump(String key) {
+		return stringRedisTemplate.dump(key);
+	}
+
+	@Override
+	public void restore(String key, byte[] value, long timeToLive, TimeUnit unit) {
+		stringRedisTemplate.restore(key, value, timeToLive, unit);		
+	}
+	@Override
+	public String flushDB(){
+		return stringRedisTemplate.execute(new RedisCallback<String>() {
 			public String doInRedis(RedisConnection connection) throws DataAccessException {
 				connection.flushDb();
 				return "ok";
@@ -121,8 +206,8 @@ public class RedisKVServiceImpl implements RedisKVService {
 	}
 
 	@Override
-	public long dbSize() throws Exception {
-		return redisTemplate.execute(new RedisCallback<Long>() {
+	public long dbSize(){
+		return stringRedisTemplate.execute(new RedisCallback<Long>() {
 			public Long doInRedis(RedisConnection connection) throws DataAccessException {
 				return connection.dbSize();
 			}
@@ -130,61 +215,12 @@ public class RedisKVServiceImpl implements RedisKVService {
 	}
 
 	@Override
-	public String ping() throws Exception {
-		return redisTemplate.execute(new RedisCallback<String>() {
+	public String ping(){
+		return stringRedisTemplate.execute(new RedisCallback<String>() {
 			public String doInRedis(RedisConnection connection) throws DataAccessException {
 				return connection.ping();
 			}
 		});
-	}
-
-	@Override
-	public List<String> mget(List<String> keys) throws Exception {
-		return stringRedisTemplate.opsForValue().multiGet(keys);
-	}
-
-	@Override
-	public void mset(Map<String, String> map) throws Exception {
-		stringRedisTemplate.opsForValue().multiSet(map);
-	}
-
-	@Override
-	public Integer append(String key, String value) throws Exception {
-		return stringRedisTemplate.opsForValue().append(key, value);
-	}
-
-	@Override
-	public Double incrByFloat(String key, Double incrBy) throws Exception {
-		return stringRedisTemplate.opsForValue().increment(key, incrBy);
-	}
-
-	@Override
-	public boolean msetnx(Map<String, String> map) throws Exception {
-		return stringRedisTemplate.opsForValue().multiSetIfAbsent(map);
-	}
-
-	@Override
-	public boolean expire(String key, Long timeout, TimeUnit unit) throws Exception {
-		return redisTemplate.expire(key, timeout, unit);
-	}
-
-	@Override
-	public Set<String> keys(String pattern) throws Exception {
-		return redisTemplate.keys(pattern);
-	}
-
-	@Override
-	public boolean persist(String key) throws Exception {
-		return redisTemplate.persist(key);
-	}
-
-	@Override
-	public Long getExpire(String key, TimeUnit timeUnit) throws Exception {
-		return redisTemplate.getExpire(key, timeUnit);
-	}
-	@Override
-	public String type(String key) throws Exception {
-		return redisTemplate.type(key).code();
 	}
 
 }
