@@ -39,7 +39,7 @@ public interface RedisListService {
 	 * @Description   
 	 * @param key
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Object leftPop(String key);
@@ -53,7 +53,7 @@ public interface RedisListService {
 	 * @param timeout
 	 * @param unit
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Object leftPop(String key,Long timeout,TimeUnit unit);
@@ -65,7 +65,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long leftPush(String key,Object value);
@@ -78,7 +78,7 @@ public interface RedisListService {
 	 * @param pivot
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long leftPush(String key,Object pivot,Object value);
@@ -90,7 +90,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param values
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long leftPushAll(String key,Collection<Object> values);
@@ -102,7 +102,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param values
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long leftPushAll(String key,Object... values);
@@ -115,7 +115,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long leftPushIfPresent(String key,Object value);
@@ -129,7 +129,7 @@ public interface RedisListService {
 	 * @param start
 	 * @param end
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Collection<Object> range(String key,Long start,Long end);
@@ -147,7 +147,7 @@ public interface RedisListService {
 	 * @param count
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long remove(String key,Long count,Object value);
@@ -160,7 +160,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param start
 	 * @param end
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public void trim(String key,Long start,Long end);
@@ -171,7 +171,7 @@ public interface RedisListService {
 	 * @Description   
 	 * @param key
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Object rightPop(String key);
@@ -185,7 +185,7 @@ public interface RedisListService {
 	 * @param timeout
 	 * @param unit
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Object rightPop(String key,Long timeout,TimeUnit unit);
@@ -197,7 +197,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long rightPush(String key,Object value);
@@ -210,7 +210,7 @@ public interface RedisListService {
 	 * @param pivot
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long rightPush(String key,Object pivot,Object value);
@@ -224,7 +224,7 @@ public interface RedisListService {
 	 * @param sourceKey
 	 * @param destinationKey
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Object rightPopAndLeftPush(String sourceKey, String destinationKey);
@@ -239,7 +239,7 @@ public interface RedisListService {
 	 * @param timeout
 	 * @param unit
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Object rightPopAndLeftPush(String sourceKey, String destinationKey,Long timeout,TimeUnit unit);
@@ -251,7 +251,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param values
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long rightPushAll(String key,Collection<Object> values);
@@ -263,7 +263,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param values
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long rightPushAll(String key,Object... values);
@@ -275,7 +275,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long rightPushIfPresent(String key,Object value);
@@ -287,7 +287,7 @@ public interface RedisListService {
 	 * @param key
 	 * @param index
 	 * @param value
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public void set(String key,Long index,Object value);
@@ -298,7 +298,7 @@ public interface RedisListService {
 	 * @Description   
 	 * @param key
 	 * @return
-	 * @throws Exception
+	 * @throws
 	 *
 	 */
 	public Long size(String key);

@@ -419,15 +419,5 @@ public interface RedisKVService {
      */
     public long dbSize();  
   
-    /**
-     * 检验连接
-     *
-     * @Title ping   
-     * @Description   
-     * @return
-     * @throws Exception
-     *
-     */
-    public String ping();  
 }
 

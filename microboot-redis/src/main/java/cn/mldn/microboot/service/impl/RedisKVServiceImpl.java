@@ -214,13 +214,4 @@ public class RedisKVServiceImpl implements RedisKVService {
 		});
 	}
 
-	@Override
-	public String ping(){
-		return stringRedisTemplate.execute(new RedisCallback<String>() {
-			public String doInRedis(RedisConnection connection) throws DataAccessException {
-				return connection.ping();
-			}
-		});
-	}
-
 }

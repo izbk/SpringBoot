@@ -45,7 +45,6 @@ public interface RedisZSetService {
 	 * @param score the score.
 	 * @param value the value.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zadd">Redis Documentation: ZADD</a>
 	 */
 	Boolean add(String key, Object value, double score);
 
@@ -55,7 +54,6 @@ public interface RedisZSetService {
 	 * @param key must not be {@literal null}.
 	 * @param tuples must not be {@literal null}.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zadd">Redis Documentation: ZADD</a>
 	 */
 	Long add(String key, Set<TypedTuple<Object>> tuples);
 
@@ -65,7 +63,6 @@ public interface RedisZSetService {
 	 * @param key must not be {@literal null}.
 	 * @param values must not be {@literal null}.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrem">Redis Documentation: ZREM</a>
 	 */
 	Long remove(String key, Object... values);
 
@@ -76,7 +73,6 @@ public interface RedisZSetService {
 	 * @param delta
 	 * @param value the value.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zincrby">Redis Documentation: ZINCRBY</a>
 	 */
 	Double incrementScore(String key, Object value, double delta);
 
@@ -86,7 +82,6 @@ public interface RedisZSetService {
 	 * @param key must not be {@literal null}.
 	 * @param o the value.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrank">Redis Documentation: ZRANString</a>
 	 */
 	Long rank(String key, Object o);
 
@@ -96,7 +91,6 @@ public interface RedisZSetService {
 	 * @param key must not be {@literal null}.
 	 * @param o the value.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrevrank">Redis Documentation: ZREObjectRANString</a>
 	 */
 	Long reverseRank(String key, Object o);
 
@@ -107,7 +101,6 @@ public interface RedisZSetService {
 	 * @param start
 	 * @param end
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrange">Redis Documentation: ZRANGE</a>
 	 */
 	Set<Object> range(String key, long start, long end);
 
@@ -118,7 +111,6 @@ public interface RedisZSetService {
 	 * @param start
 	 * @param end
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrange">Redis Documentation: ZRANGE</a>
 	 */
 	Set<TypedTuple<Object>> rangeWithScores(String key, long start, long end);
 
@@ -129,7 +121,6 @@ public interface RedisZSetService {
 	 * @param min
 	 * @param max
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrangebyscore">Redis Documentation: ZRANGEBYSCORE</a>
 	 */
 	Set<Object> rangeByScore(String key, double min, double max);
 
@@ -140,7 +131,6 @@ public interface RedisZSetService {
 	 * @param min
 	 * @param max
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrangebyscore">Redis Documentation: ZRANGEBYSCORE</a>
 	 */
 	Set<TypedTuple<Object>> rangeByScoreWithScores(String key, double min, double max);
 
@@ -153,7 +143,6 @@ public interface RedisZSetService {
 	 * @param offset
 	 * @param count
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrangebyscore">Redis Documentation: ZRANGEBYSCORE</a>
 	 */
 	Set<Object> rangeByScore(String key, double min, double max, long offset, long count);
 
@@ -166,7 +155,6 @@ public interface RedisZSetService {
 	 * @param offset
 	 * @param count
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrangebyscore">Redis Documentation: ZRANGEBYSCORE</a>
 	 */
 	Set<TypedTuple<Object>> rangeByScoreWithScores(String key, double min, double max, long offset, long count);
 
@@ -177,7 +165,6 @@ public interface RedisZSetService {
 	 * @param start
 	 * @param end
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrevrange">Redis Documentation: ZREObjectRANGE</a>
 	 */
 	Set<Object> reverseRange(String key, long start, long end);
 
@@ -188,7 +175,6 @@ public interface RedisZSetService {
 	 * @param start
 	 * @param end
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrevrange">Redis Documentation: ZREObjectRANGE</a>
 	 */
 	Set<TypedTuple<Object>> reverseRangeWithScores(String key, long start, long end);
 
@@ -199,7 +185,6 @@ public interface RedisZSetService {
 	 * @param min
 	 * @param max
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrevrange">Redis Documentation: ZREObjectRANGE</a>
 	 */
 	Set<Object> reverseRangeByScore(String key, double min, double max);
 
@@ -210,7 +195,6 @@ public interface RedisZSetService {
 	 * @param min
 	 * @param max
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrevrangebyscore">Redis Documentation: ZREObjectRANGEBYSCORE</a>
 	 */
 	Set<TypedTuple<Object>> reverseRangeByScoreWithScores(String key, double min, double max);
 
@@ -223,7 +207,6 @@ public interface RedisZSetService {
 	 * @param offset
 	 * @param count
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrevrangebyscore">Redis Documentation: ZREObjectRANGEBYSCORE</a>
 	 */
 	Set<Object> reverseRangeByScore(String key, double min, double max, long offset, long count);
 
@@ -236,7 +219,6 @@ public interface RedisZSetService {
 	 * @param offset
 	 * @param count
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrevrangebyscore">Redis Documentation: ZREObjectRANGEBYSCORE</a>
 	 */
 	Set<TypedTuple<Object>> reverseRangeByScoreWithScores(String key, double min, double max, long offset, long count);
 
@@ -247,7 +229,6 @@ public interface RedisZSetService {
 	 * @param min
 	 * @param max
 	 * @return
-	 * @see <a href="http://redis.io/commands/zcount">Redis Documentation: ZCOUNT</a>
 	 */
 	Long count(String key, double min, double max);
 
@@ -256,7 +237,6 @@ public interface RedisZSetService {
 	 *
 	 * @param key
 	 * @return
-	 * @see <a href="http://redis.io/commands/zcard">Redis Documentation: ZCARD</a>
 	 */
 	Long size(String key);
 
@@ -266,7 +246,6 @@ public interface RedisZSetService {
 	 * @param key must not be {@literal null}.
 	 * @param o the value.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zrem">Redis Documentation: ZREM</a>
 	 */
 	Double score(String key, Object o);
 
@@ -277,7 +256,6 @@ public interface RedisZSetService {
 	 * @param start
 	 * @param end
 	 * @return
-	 * @see <a href="http://redis.io/commands/zremrangebyrank">Redis Documentation: ZREMRANGEBYRANString</a>
 	 */
 	Long removeRange(String key, long start, long end);
 
@@ -288,7 +266,6 @@ public interface RedisZSetService {
 	 * @param min
 	 * @param max
 	 * @return
-	 * @see <a href="http://redis.io/commands/zremrangebyscore">Redis Documentation: ZREMRANGEBYSCORE</a>
 	 */
 	Long removeRangeByScore(String key, double min, double max);
 
@@ -299,7 +276,6 @@ public interface RedisZSetService {
 	 * @param otherStringey must not be {@literal null}.
 	 * @param destStringey must not be {@literal null}.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zunionstore">Redis Documentation: ZUNIONSTORE</a>
 	 */
 	Long unionAndStore(String key, String otherKey, String destKey);
 
@@ -310,7 +286,6 @@ public interface RedisZSetService {
 	 * @param otherStringeys must not be {@literal null}.
 	 * @param destStringey must not be {@literal null}.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zunionstore">Redis Documentation: ZUNIONSTORE</a>
 	 */
 	Long unionAndStore(String key, Collection<String> otherStringeys, String destStringey);
 
@@ -321,7 +296,6 @@ public interface RedisZSetService {
 	 * @param otherStringey must not be {@literal null}.
 	 * @param destStringey must not be {@literal null}.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zinterstore">Redis Documentation: ZINTERSTORE</a>
 	 */
 	Long intersectAndStore(String key, String otherKey, String destKey);
 
@@ -332,7 +306,6 @@ public interface RedisZSetService {
 	 * @param otherStringeys must not be {@literal null}.
 	 * @param destStringey must not be {@literal null}.
 	 * @return
-	 * @see <a href="http://redis.io/commands/zinterstore">Redis Documentation: ZINTERSTORE</a>
 	 */
 	Long intersectAndStore(String key, Collection<String> otherStringeys, String destStringey);
 
@@ -342,7 +315,6 @@ public interface RedisZSetService {
 	 * @param key must not be {@literal null}.
 	 * @param range must not be {@literal null}.
 	 * @since 1.7
-	 * @see <a href="http://redis.io/commands/zrangebylex">Redis Documentation: ZRANGEBYLEX</a>
 	 */
 	Set<Object> rangeByLex(String key, Range range);
 
@@ -354,7 +326,6 @@ public interface RedisZSetService {
 	 * @param limit can be {@literal null}.
 	 * @return
 	 * @since 1.7
-	 * @see <a href="http://redis.io/commands/zrangebylex">Redis Documentation: ZRANGEBYLEX</a>
 	 */
 	Set<Object> rangeByLex(String key, Range range, Limit limit);
 }
