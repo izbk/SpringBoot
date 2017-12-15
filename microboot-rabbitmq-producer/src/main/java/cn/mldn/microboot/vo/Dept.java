@@ -2,8 +2,11 @@ package cn.mldn.microboot.vo;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public class Dept implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 553315850768107080L;
 	private Long deptno ;
 	private String dname ;
 	public Long getDeptno() {

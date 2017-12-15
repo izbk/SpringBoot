@@ -6,8 +6,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication	// 启动SpringBoot程序，而后自带子包扫描
 @EnableTransactionManagement
-public class StartSpringBootMain {
+public class StartConsumerMain {
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(StartSpringBootMain.class, args);
+        SpringApplication.run(StartConsumerMain.class, args);
     }
 }

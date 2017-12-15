@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import cn.mldn.microboot.config.ProducerConfig;
 import cn.mldn.microboot.producer.IMessageProducerService;
 import cn.mldn.microboot.vo.Dept;
-@Service("messageProducerService")
-public class MessageProducerServiceImpl implements IMessageProducerService {
+@Service("messageProducerService2")
+public class MessageProducerServiceImpl2 implements IMessageProducerService {
 	@Resource
 	private RabbitTemplate rabbitTemplate;
 	@Override
